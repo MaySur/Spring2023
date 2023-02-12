@@ -54,7 +54,7 @@ var myName = "Luffy"
 console.log("I'm "+myName)
 
 ```
-* var keyword if a assignment variable
+* var keyword is a assignment variable
 * naming convention is camel case: myName
 * var names cannot start with numbers, protected keywords like function, no spaces in the name
 
@@ -226,115 +226,85 @@ switch (items){
 ***
 
 
-## 11. Conditionals:
-* If else like in any other language
-```
-pub fn run(){
-
-    let age = 21;
-    let check_id= true;
-    let familiar = true;
-
-    if age >=21 && check_id || familiar{
-        println!("Bouncer: Come on in!")
-    }
-    else if age <21 && !check_id{
-        println!("Bouncer: Get out of here!")
-    }else{
-        println!("Bouncer: ID please")
-        
-    }
-
-
-    let is_old = if age >= 21{true} else {false};
-    println!("Is old enough: {}", is_old);
-
-
-}
-
-```  
-
-
-## 12. Loop:
-* Variety of loops like any other languages
-```
------loops.rs------------------
-pub fn run(){
-    let mut count =0;
-
-   loop{
-    count += 1;
-     println!("No. {}", count);
-      if count ==20{
-         break;
-        }
-    }
-
-    while count <=100{
-
-        if count % 3 == 0 && count % 5  == 0{ 
-            println!("FizzBuzz")
-        }
-        else if count % 3 == 0{
-            println!("Fizz")
-        }
-        else if count % 5 == 0{
-            println!("Buzz")
-        }
-        else{
-            println!("{}", count)
-        }
-        count +=1;
-    }
-
-
-    for i in 0..100{
-        if i % 3 ==0 && i % 5 ==0{println!("Fizzbuzz");} 
-        else if i % 3 ==0  {println!("Fizz")}
-        else if i % 5 ==0 {println!("Buzz")}
-        else {println!("{}",count)}
-    }
-
-}
-
-```  
-
-
-## 13.	Fuctions:
+## 11. Fuction Declaration:
 * Similar to every other language
 ```
------------functions.rs----------------
-pub fn run(){
-
-    greeting("Greetings", "Oliver");
-    let get_sum = add(5,5);
-    println!("Sum: {}", get_sum);
-
-
-//closer
-    let n3 =10;
-    let add_nums = |n1: i32, n2: i32| n1 + n2 + n3;
-    println!("add_nums function: {}", add_nums(3,3));
-
-
+function hello(){
+    console.log('Hello Humans')
 }
 
-fn greeting(greet : &str, name: &str){
-    println!("{} {}", greet, name);
-
-}
-
-fn add(n1: i32, n2: i32) -> i32{
-    n1+n2
-}
+hello()
 ```  
 
-* Always need to specify the datatypes for the parameters for functions --> 
-    * fn <function_name> (<param_1> : <data_type>){}
-* In order to return something instead of printing we need to specify the return type -->
-    * fn <function_name> (<param_1> : <data_type>) --> <return_type>{}
-    * There should also not ber ';' at the end of the return statement as shown in the code above
-* The closer is similar to the add fucntion but more optimized and more free unlike the add function whihc is block code
+* This is very similar to java
+    * To call the function specify the name as shown
+* Parameters for these functions are the same as python
+
+```
+let name = 'Nami'
+function hello(x){
+    let greeting = `Hello ${x}`
+    return greeting
+}
+
+console.log(hello(name)) // Hello Nami
+
+```
+
+### Function Expresions
+* Another way to define functions
+```
+const calculateArea = function (width, height){
+    const area = width * height
+    return area
+}
+```
+
+* This is done by defining a function inside an expression.
+* This can be done why any assignment declaration variables (var, let, const)
+* Best practice is to use const as it is immutable
+
+### Arrow Functions
+
+* This gets rid of the function keyword
+
+```
+const name = (first, last) => {
+    let fullName = first + ' ' + last
+    return fullName
+}
+
+```
+
+* There are many ways to optimize the Arraw Function
+
+### Zero Parameters
+```
+const <functionName> = () =>{}
+```
+
+### One Parameters
+```
+const <functionName> = <parameterOne> =>{}
+```
+### Two or more Parameters
+```
+const <functionName> = (<parameterOne>, <parameterTwo> )=>{}
+```
+
+### Single-Line
+```
+const sum num => num + num;
+```
+
+### Multi-Line
+
+```
+const sum = num => {
+    const total = num +num
+    return total
+}
+```
 
 
 ## 14.	Pointer Refrences:
