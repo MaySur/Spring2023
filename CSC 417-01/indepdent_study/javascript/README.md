@@ -307,82 +307,160 @@ const sum = num => {
 ```
 
 
-## 14.	Pointer Refrences:
-* This is a pointer in memory
-* Memory works similar to C/C++ like a stack
+## 12.	Scopes:
+### Global Scope
 ```
--------------pointer_ref.rs----------------------
-pub fn run(){
-    // Primitive array pointer behavior
-    let arr1 = [1,2,3];
-    let arr2 = arr1;
-    println!("Val in arrs: {:?}", (arr1, arr2));
+const sea = 'East Blue'
 
-    //Vector non-primitive pointer behavior
-    
-    let vec1= vec![1,2,3];
-    //let vec2 = vec1;
-    let vec2 = &vec1;
+const home = () => sea // East Blue
+
+console.log(home()) //East Blue
+```
+
+* Variables defined inside a function is not acessible outside the function
 
 
-                                    //vec1
-    println!("Val in Vector: {:?}", (&vec1, vec2));
+## 13.	Arrays:
+* Arrays in Javascript works similarly to Java
+
+```
+let colors = ['red', 'blue', 'green'] 
+
+>>>['red', 'blue', 'green']
+
+console.log(colors[0])
+>>> red
+
+colors[0] = 'purple'
+console.log(color)
+>>> ['purple', 'blue', 'green'] 
+```
+###  Built-in methods
+* .push()
+```
+let colors = ['red', 'blue', 'green'] 
+console.log(colors.push('pink'))
+
+>>>['red', 'blue', 'green', 'pink']
+```
+* .pop()
+```
+let colors = ['red', 'blue', 'green'] 
+console.log(colors.push('pink'))
+
+>>>['red', 'blue', 'green', 'pink']
+console.log(colors.pop())
+>>>['red', 'blue', 'green']
+```
+
+* More Built-in [Javascipt_Docs](https://www.codecademy.com/resources/docs/javascript/arrays)
+
+### Functions with arrays
+```
+let colors = ['red', 'blue', 'green'] 
+
+const removeElement = newArr =>newArr.pop()
+
+
+removeElement(colors)
+console.log(colors)
+
+>>> ['red','blue']
+```
+
+### Nested Loops
+```const nestedArr = [[1], [2, 3]];
+ 
+console.log(nestedArr[1]); // Output: [2, 3]
+console.log(nestedArr[1][0]); // Output: 2
+```
+
+
+## 14.	Loops:
+### `for` loops
+* The syntax for the for loop is almost exactly the same as for java
+```
+for( let i =0;i < 4;i++ ){
+    console.log(i)
+} 
+
+>>> 0
+>>> 1
+>>> 2
+>>> 3
+
+```  
+
+### While Loops
+* While loop syntax is very similar to that of Java's
+
+
+```
+let currentStatus = 0
+
+while (currentStatus < 9){
+    console.log(currentStatus)
+    currentStatus++
 
 }
-```  
-* We see the differnce in behavior between a primitive type and a non-primitive type:
-    * Under primitive type when the first pointer or variable (in this case arr1) is reassigned to anothe pointer (arr2) both pointers still have the memory address to the data that is assigned
-    * While with non-primitive type it is not the case as we see with thr error. The inital pointer (vec1) after being assigned to the second pointer (vec2), is no longer pointing to the data and thus gives us an error
-    * In order to change this we need to put the '&' infront of the pointer as shown above
-
-
-
-## 15.	Structs:
-* This is like classes in java
 ```
-----------struct.rs----------
-struct Color{
-        red: u8,
-        green: u8,
-        blue: u8
-    }
 
-//Tuple Struct
+### do......while loop
 
-struct Color_Ver2(u8,u8,u8);
-pub fn run(){
+* Also similar to java
 
-    let mut c= Color{
-        red: 255,
-        green: 0,
-        blue: 0
-    };
+```
+let message = 'Apple'
+let mess = 'Devil Fruit'
 
-    c.red= 200;
+do {
+    console.log(message)
+}while (true === false)
 
-    //println!("Color: {} {} {}", c.red, c.green, c.blue );
-    let mut c_2 = Color_Ver2(255,0,0);
-    c_2.0= 200;
-
-    println!("Color: {} {} {}", c_2.0, c_2.1, c_2.2);
-
+while (true === false){
+    console.log(mess)
 }
-    
-``` 
-* More detailed example of structs in person_struct.rs 
 
-## 14.	Pointer Refrences:
-* This is a pointer in memory
-* Memory works similar to C/C++ like a stack
+>> Apple
 ```
-<link rel="stylesheet" href="{% static '<app_name>/styles.css' %}">
-```  
 
-## 14.	Pointer Refrences:
-* This is a pointer in memory
-* Memory works similar to C/C++ like a stack
+## 15.	Iterators
+* These are built in array methods.
 ```
-<link rel="stylesheet" href="{% static '<app_name>/styles.css' %}">
+const artists = ['Picasso', 'Kahlo', 'Matisse', 'Utamaro'];
+
+artists.forEach(artist => {
+  console.log(artist + ' is one of my favorite artists.');
+});
+
+>>> Picasso is one of my favorite artists.
+    Kahlo is one of my favorite artists.
+    Matisse is one of my favorite artists.
+    Utamaro is one of my favorite artists.
+
+
+const numbers = [1, 2, 3, 4, 5];
+
+const squareNumbers = numbers.map(number => {
+  return number * number;
+});
+
+console.log(squareNumbers);
+>>> [ 1, 4, 9, 16, 25 ]
+
+
+const things = ['desk', 'chair', 5, 'backpack', 3.14, 100];
+
+const onlyNumbers = things.filter(thing => {
+  return typeof thing === 'number';
+});
+
+console.log(onlyNumbers);
+>>> [ 5, 3.14, 100 ]
+
+
+
+
 ```  
 
 ## 14.	Pointer Refrences:
