@@ -463,28 +463,201 @@ console.log(onlyNumbers);
 
 ```  
 
-## 14.	Pointer Refrences:
-* This is a pointer in memory
-* Memory works similar to C/C++ like a stack
+## 16.	Objects:
+* Objects is like a key-value pair
+* A key is a variable name that points to a location in memory that holds value.
+* Key's value can be any datatype 
 ```
-<link rel="stylesheet" href="{% static '<app_name>/styles.css' %}">
+let spaceship = {
+    'Fuel Type' : 'diesel',
+    color : 'silver'
+}
 ```  
 
-## 14.	Pointer Refrences:
-* This is a pointer in memory
-* Memory works similar to C/C++ like a stack
+* Spaceship object has 2 properties 
+    * Fuel Type and color
+    * There are quotation around Fue Type because there is a space
+* To access a object's properties 
+    * U need to first put the object name followed by a `.` then a object property name:
+    * `spaceship.color // 'silver' `
+### Bracket Notation
+* Alternative way to access object values
 ```
-<link rel="stylesheet" href="{% static '<app_name>/styles.css' %}">
+let spaceship = {
+  'Fuel Type': 'Turbo Fuel',
+  'Active Duty': true,
+  homePlanet: 'Earth',
+  numCrew: 5
+};
+spaceship['Active Duty'];   // Returns true
+spaceship['Fuel Type'];   // Returns  'Turbo Fuel'
+spaceship['numCrew'];   // Returns 5
+spaceship['!!!!!!!!!!!!!!!'];   // Returns undefined
+```
+* Streamlined
+```
+let returnAnyProp = (objectName, propName) => objectName[propName];
+ 
+returnAnyProp(spaceship, 'homePlanet'); //  Earth
+
+```
+## 17.	Methods:
+* A method an action that a object can take.
+* Like console.log(), where console is a object and log() is a method of the console object
+* This is how you would declare a Object method and accessing the method
+```
+  let spaceship = {
+    passengers: null,
+    telescope: {
+      yearBuilt: 2018,
+      model: "91031-XLT",
+      focalLength: 2032 
+    },
+    crew: {
+      captain: { 
+        name: 'Sandra', 
+        degree: 'Computer Engineering', 
+        encourageTeam() { console.log('We got this!') },
+       'favorite foods': ['cookies', 'cakes', 'candy', 'spinach'] }
+    },
+    engine: {
+      model: "Nimbus2000"
+    },
+    nanoelectronics: {
+      computer: {
+        terabytes: 100,
+        monitors: "HD"
+      },
+      'back-up': {
+        battery: "Lithium",
+        terabytes: 50
+      }
+    }   
+  }
+  
+```
+* To access the object methods there are many ways, there is the dot `.` technique as well as the `[]` technique 
+
+```  
+let capFave = spaceship.crew.captain["favorite foods"][0]
+
+console.log(capFave)
+```
+* In order to reassign data you use the `.` notation followed by `=`
+```
+spaceship.passengers = [{name : 'dog'}, {name : 'Robin'}]
+console.log(spaceship.passengers)
+
+let firstPassenger = spaceship.passengers[0]
+console.log(firstPassenger)
+
+```
+***
+
+
+## 18.	`this` keyword:
+* `this` keyword acts very similarly to the `self` keyword from python
+* `this` is used when are accessing a object's methods within a object inside a parent object
+```
+const robot = {
+  model : '1E78V2',
+  energyLevel : 100,
+  provideInfo() {
+    return `I am ${this.model} and my current energy level is ${this.energyLevel}`
+  }
+  
+}
+
+console.log(robot.provideInfo())
+```
+
+* Inside the return statement in the provideInfo() function inside the robot object when we try to reference the other fucntions we need to add the `this` keyword to access the values.
+
+
+### Arrow notation with `this`
+* `this` cannot be used with the Arrow notation
+
+
+## 19. Access Modifiers:
+* This is very similar to python where it depends on the developers to respect the naming notation.
+* The naming convention is `_name`
+
+## 20.	Getters:
+* This is a technique that is used when we need to access object methods inside a object and format it and can return anytype with the methods
+```
+const name = {
+    _birthname : '',
+    firstName : 'Sanji',
+    lastName : 'Vinsmoke',
+    get fullName(){
+        if (this.firstName && this.lastName){
+            return `${this.lastName}, ${this.firstName}`
+        }
+    }
+}
+console.log( name.fullName)
+
 ```  
 
-## 14.	Pointer Refrences:
-* This is a pointer in memory
-* Memory works similar to C/C++ like a stack
+## 21. Setters:
+* Setter is used when we need to reassign methods inside a object
 ```
-<link rel="stylesheet" href="{% static '<app_name>/styles.css' %}">
+const robot = {
+  _model: '1E78V2',
+  _energyLevel: 100,
+  _numOfSensors: 15,
+  get numOfSensors(){
+    if(typeof this._numOfSensors === 'number'){
+      return this._numOfSensors;
+    } else {
+      return 'Sensors are currently down.'
+    }
+  },
+
+  set numOfSensors (num){
+    if (typeof num === 'number' && num >= 0){
+      this._numOfSensors = num
+    } else{
+      console.log('Pass in a number that is greater than or equal to 0')
+    }
+
+    }
+  
+}
+
+robot.numOfSensors = 100
+
+console.log(robot.numOfSensors)
 ```  
 
-## 14.	Pointer Refrences:
+## 21 Factory Functions:
+* Factories are used to create objects and return them 
+* This is used when there is a need to create a lot of objects but those objects share similarities and to avoid repetition
+```
+const robotFactory = (model, mobile) =>{
+  return{
+  model: model,
+  mobile: mobile,
+  beep() {
+    return 'Beep Boop'
+  }
+  }
+}
+
+const tinCan = robotFactory('P-500', true)
+console.log(tinCan.model) // P-500
+const stupidBot = robotFactory('P', false)
+console.log(stupidBot.model) // P
+const moenyBot = robotFactory('Gold-696', true)
+console.log(moenyBot.mobile) // true
+```  
+
+
+
+
+
+
+## 20.	Pointer Refrences:
 * This is a pointer in memory
 * Memory works similar to C/C++ like a stack
 ```
