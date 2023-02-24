@@ -630,7 +630,7 @@ robot.numOfSensors = 100
 console.log(robot.numOfSensors)
 ```  
 
-## 21 Factory Functions:
+## 21. Factory Functions:
 * Factories are used to create objects and return them 
 * This is used when there is a need to create a lot of objects but those objects share similarities and to avoid repetition
 ```
@@ -657,9 +657,30 @@ console.log(moenyBot.mobile) // true
 
 
 
-## 20.	Pointer Refrences:
-* This is a pointer in memory
-* Memory works similar to C/C++ like a stack
+## 22. Built-in Objects:
+* [DOCS](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods)
+
+
 ```
-<link rel="stylesheet" href="{% static '<app_name>/styles.css' %}">
+const robot = {
+	model: 'SAL-1000',
+  mobile: true,
+  sentient: false,
+  armor: 'Steel-plated',
+  energyLevel: 75
+};
+
+// What is missing in the following method call?
+const robotKeys = Object.keys(robot);
+
+console.log(robotKeys);
+
+// Declare robotEntries below this line:
+
+const robotEntries = Object.entries(robot)
+console.log(robotEntries);
+
+// Declare newRobot below this line:
+const newRobot = Object.assign({laserBlaster: true, voiceRecognition: true}, robot)
+console.log(newRobot);
 ```  
