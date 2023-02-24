@@ -684,3 +684,33 @@ console.log(robotEntries);
 const newRobot = Object.assign({laserBlaster: true, voiceRecognition: true}, robot)
 console.log(newRobot);
 ```  
+
+## 23. Classes:
+* A class is where we write an object in which often helps when there is a repetation of a similar object
+```
+class crew {
+    constructor(name) {
+        this._name = name;
+        this._attack = 0;
+      }
+    get name (){
+        return this._name
+    }
+    get attack() {
+        return this._attack
+    }
+
+    attackPower(){
+        this._attack++
+    }
+}
+
+let luffy = new crew('Luffy')
+console.log(luffy.name) // Luffy
+console.log(luffy.attack) // 0
+luffy.attackPower()
+luffy.attackPower()
+luffy.attackPower()
+console.log(luffy.attack) //3
+```
+* `constructor` is a method under which you declare the variables and also have the parameters for the class.
